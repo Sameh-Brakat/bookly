@@ -5,6 +5,7 @@ import 'reading_modes.dart';
 
 class VolumeInfo {
   String? title;
+  String? subtitle;
   List<String>? authors;
   String? publisher;
   String? publishedDate;
@@ -14,6 +15,8 @@ class VolumeInfo {
   int? pageCount;
   String? printType;
   List<String>? categories;
+  num? averageRating;
+  num? ratingsCount;
   String? maturityRating;
   bool? allowAnonLogging;
   String? contentVersion;
@@ -26,6 +29,7 @@ class VolumeInfo {
 
   VolumeInfo({
     this.title,
+    this.subtitle,
     this.authors,
     this.publisher,
     this.publishedDate,
@@ -35,6 +39,8 @@ class VolumeInfo {
     this.pageCount,
     this.printType,
     this.categories,
+    this.averageRating,
+    this.ratingsCount,
     this.maturityRating,
     this.allowAnonLogging,
     this.contentVersion,
@@ -48,6 +54,7 @@ class VolumeInfo {
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
         title: json['title'] as String?,
+        subtitle: json['subtitle'] as String?,
         authors: json['authors'] as List<String>?,
         publisher: json['publisher'] as String?,
         publishedDate: json['publishedDate'] as String?,
@@ -59,9 +66,11 @@ class VolumeInfo {
             ? null
             : ReadingModes.fromJson(
                 json['readingModes'] as Map<String, dynamic>),
-        pageCount: json['pageCount'] as int?,
+        pageCount: json['pageCount'] as int,
         printType: json['printType'] as String?,
         categories: json['categories'] as List<String>?,
+        averageRating: json['averageRating'] as num?,
+        ratingsCount: json['ratingsCount'] as num?,
         maturityRating: json['maturityRating'] as String?,
         allowAnonLogging: json['allowAnonLogging'] as bool?,
         contentVersion: json['contentVersion'] as String?,
@@ -80,6 +89,7 @@ class VolumeInfo {
 
   Map<String, dynamic> toJson() => {
         'title': title,
+        'subtitle': subtitle,
         'authors': authors,
         'publisher': publisher,
         'publishedDate': publishedDate,
@@ -90,6 +100,8 @@ class VolumeInfo {
         'pageCount': pageCount,
         'printType': printType,
         'categories': categories,
+        'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
         'maturityRating': maturityRating,
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
