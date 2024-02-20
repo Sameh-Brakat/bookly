@@ -11,7 +11,8 @@ import 'Features/Splash/presentation/views/splash_view.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  Hive.openBox(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
 
   runApp(const Bookly());
 }
