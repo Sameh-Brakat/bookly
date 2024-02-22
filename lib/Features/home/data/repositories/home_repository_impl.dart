@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bookly/Features/home/data/data_sources/home_local_data_source.dart';
 import 'package:bookly/Features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:bookly/Features/home/domain/entities/book_entity.dart';
@@ -25,6 +27,7 @@ class HomeRepositoryImpl extends HomeRepository {
 
       return right(books);
     } catch (e) {
+      log(e.toString());
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));
       } else {
