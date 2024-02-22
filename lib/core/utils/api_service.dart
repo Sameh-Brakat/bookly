@@ -1,22 +1,16 @@
 import 'package:dio/dio.dart';
 
 class ApiService {
-  late final Dio dio;
+  static late Dio dio;
 
-  ApiService(this.dio) {
+  static init() {
     dio = Dio(BaseOptions(
       baseUrl: 'https://www.googleapis.com/books/v1/',
       receiveDataWhenStatusError: true,
     ));
   }
-  // static init() {
-  //   dio = Dio(BaseOptions(
-  //     baseUrl: 'https://www.googleapis.com/books/v1/',
-  //     receiveDataWhenStatusError: true,
-  //   ));
-  // }
 
-  Future<Response> getData({
+  static Future<Response> getData({
     required String url,
     Map<String, dynamic>? query,
     String? token,
@@ -30,7 +24,7 @@ class ApiService {
     );
   }
 
-  Future<Response?> postData({
+  static Future<Response?> postData({
     required String url,
     Map<String, dynamic>? query,
     required Map<String, dynamic> data,
