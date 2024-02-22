@@ -5,10 +5,17 @@ import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 void setupServiceLocator() {
+  // getIt.registerSingleton<ApiService>(
+  //   ApiService(
+  //     Dio(),
+  //   ),
+  // );
   getIt.registerSingleton<HomeRepositoryImpl>(
     HomeRepositoryImpl(
       homeLocalDataSource: HomeLocalDataSourceImp(),
-      homeRemoteDataSource: HomeRemoteDataSourceImp(),
+      homeRemoteDataSource: HomeRemoteDataSourceImp(
+          // getIt.get<ApiService>(),
+          ),
     ),
   );
 }
